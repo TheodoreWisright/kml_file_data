@@ -1,16 +1,16 @@
-import "./App.css";
+import React from "react";
+import "./styles.css";
 import { MapContainer, TileLayer } from "react-leaflet";
 
 import ReactLeafletKml from "react-leaflet-kml";
 import { useState, useEffect } from "react";
 
-function App() {
+function KmlData() {
   const [kml, setKml] = useState(null);
 
   useEffect(() => {
     fetch(
       "https://raw.githubusercontent.com/aviklai/react-leaflet-kml/master/src/assets/example1.kml"
-      // "./assets/kml/dataOne.kml"
     )
       .then((res) => res.text())
       .then((kmlText) => {
@@ -19,6 +19,7 @@ function App() {
         setKml(kml);
       });
   }, []);
+
   return (
     <MapContainer center={[37.422, -122.084]} zoom={17}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -27,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default KmlData;
